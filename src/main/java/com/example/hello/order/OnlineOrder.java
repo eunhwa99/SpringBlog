@@ -6,15 +6,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OnlineOrder implements Order {
-    Product product;
-
+   private  Product product;
     @Autowired
     public OnlineOrder(Product product) {
         this.product = product;
-    }
-
-    public Product getProduct() {
-        return product;
     }
 
 }
