@@ -6,6 +6,7 @@ import com.example.hello.myAnnotation.IncludeComponent;
 import com.example.hello.product.Book;
 import com.example.hello.product.Food;
 import com.example.hello.product.Product;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
@@ -16,8 +17,9 @@ import org.springframework.context.annotation.FilterType;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class AutoAppConfigTest {
+class AppConfigTest {
     @Test
+    @DisplayName("Book 객체 빈을 생성한다. (테스트 시, 아래 ComponentFilterAppConfig 주석 처리 필요")
     void basicScan() {
         ApplicationContext ac = new
                 AnnotationConfigApplicationContext(HelloApplication.class);
