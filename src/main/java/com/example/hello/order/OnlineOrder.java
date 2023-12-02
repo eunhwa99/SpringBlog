@@ -6,16 +6,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OnlineOrder implements Order {
+    Product product;
 
-    /*Product product;
-
-    @Autowired // 얘를 쓰려면 OnlineOrder도 @Component 이어야 한다.
+    @Autowired
     public OnlineOrder(Product product) {
         this.product = product;
     }
 
     public Product getProduct() {
         return product;
-    }*/
+    }
 
 }
