@@ -17,7 +17,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class AutoAppConfigTest {
-
     @Test
     void basicScan() {
         ApplicationContext ac = new
@@ -27,6 +26,13 @@ class AutoAppConfigTest {
         assertThat(product).isInstanceOf(Book.class);
     }
 
+    @ComponentScan(includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = IncludeComponent.class),
+            excludeFilters = {
+                    @ComponentScan.Filter(classes = ExcludeComponent.class),
+                    //  @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = Food.class)
+            },
+            basePackages = "com.example.hello")
+    static class ComponentFilterAppConfig { }
     @Test
     void filterScan() {
         ApplicationContext ac = new
@@ -36,14 +42,5 @@ class AutoAppConfigTest {
         assertThat(pr1).isNotNull();
         assertThrows(NoSuchBeanDefinitionException.class, () -> ac.getBean(Book.class));
 
-    }
-
-    @ComponentScan(includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = IncludeComponent.class),
-            excludeFilters = {
-                    @ComponentScan.Filter(classes = ExcludeComponent.class),
-                  //  @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = Food.class)
-            },
-            basePackages = "com.example.hello")
-    static class ComponentFilterAppConfig {
     }
 }
