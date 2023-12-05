@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OnlineOrder implements Order {
-    private Product computer;
+    private final Product computer;
 
     public OnlineOrder(Product computer) {
         this.computer = computer;

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OfflineOrder implements Order {
-    private Product computer;
+    private final Product computer;
 
     public OfflineOrder( @Qualifier("car") Product computer) {
         this.computer = computer;
